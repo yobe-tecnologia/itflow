@@ -39,7 +39,7 @@ if (!in_array($__LOCALE__, $__ALLOWED__, true)) $__LOCALE__ = $__DEFAULT__;
 
 // --- 3) Carregar catálogo do idioma (um arquivo por idioma)
 $__CATALOG__ = [];
-$__FILE__ = rtrim($__I18N_DIR__, '/\\') . DIRECTORY_SEPARATOR . $__LOCALE__ . '.php';
+$__FILE__ = rtrim($__I18N_DIR__, '/lang/\\') . DIRECTORY_SEPARATOR . $__LOCALE__ . '.php';
 if (is_file($__FILE__)) {
     $arr = include $__FILE__;
     if (is_array($arr)) $__CATALOG__ = $arr;
@@ -72,4 +72,4 @@ function i18n_set_locale(string $locale): void {
     global $__ALLOWED__, $__DEFAULT__, $__I18N_DIR__, $__LOCALE__, $__CATALOG__;
     if (!in_array($locale, $__ALLOWED__, true)) $locale = $__DEFAULT__;
     $__LOCALE__ = $locale;
-    $file = rtrim($__I18N_DIR__, '/\\') . DIRECTORY_SEPARATOR . $locale . '.php';
+    $file = rtrim($__I18N_DIR__, '/lang/\\') . DIRECTORY_SEPARATOR . $locale . '.php';
