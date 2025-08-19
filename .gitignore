@@ -1,6 +1,6 @@
 node_modules
 config.php
-
+.user.ini
 uploads/favicon.ico
 uploads/clients/*
 !uploads/clients/index.php
