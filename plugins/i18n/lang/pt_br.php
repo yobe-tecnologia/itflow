@@ -12,6 +12,13 @@ return [
   'Remember Me' => 'Lembrar de mim',
   'Looking for the' => 'Acessar o',
   'Client Portal?' => 'Portal do cliente?',
+  'Client Portal Login' => 'Acessar portal do cliente',
+  'Registered Client Email' => 'Email de cliente registrado',
+  'Client Password' => 'Senha do cliente',
+  'Forgot password?' => 'Esqueceu a senha?',
+  'Login with Microsoft Entra' => 'Acessar com Microsoft Entra',
+  'Sign in' => 'Entrar',
+
 
    // Common UI / modals
   'Confirm' => 'Confirmar',

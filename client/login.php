@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                 logAction("Client Login", "Failed", "Failed client portal login attempt using $email (incorrect password for contact ID $contact_id)", $client_id, $user_id);
 
                 header("HTTP/1.1 401 Unauthorized");
-                $_SESSION['login_message'] = 'Incorrect username or password.';
+                $_SESSION['login_message'] = __('Incorrect username or password.');
 
             }
 
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
             header("HTTP/1.1 401 Unauthorized");
 
-            $_SESSION['login_message'] = 'Incorrect username or password.';
+            $_SESSION['login_message'] = __('Incorrect username or password.');
 
         }
     }
@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title><?php echo $company_name; ?> | Client Portal Login</title>
+        <title><?php echo $company_name; ?> | <?= __('Client Portal Login') ?></title>
 
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
             <?php if (!empty($company_logo)) { ?>
                 <img alt="<?=$company_name?> logo" height="110" width="380" class="img-fluid" src="<?php echo "../uploads/settings/$company_logo"; ?>">
             <?php } else { ?>
-                <b><?=$company_name?></b> <br>Client Portal Login</h2>
+                <b><?=$company_name?></b> <br><?= __('Client Portal Login') ?></h2>
             <?php } ?>
         </div>
         <div class="card">
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                 ?>
                 <form method="post">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Registered Client Email" name="email" required autofocus>
+                        <input type="text" class="form-control" placeholder="<?= __('Registered Client Email') ?>" name="email" required autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Client Password" name="password" required>
+                        <input type="password" class="form-control" placeholder="<?= __('Client Password') ?>" name="password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -172,13 +172,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-success btn-block mb-3" name="login">Sign in</button>
+                    <button type="submit" class="btn btn-success btn-block mb-3" name="login"><?= __('Sign in') ?></button>
 
                     <hr>
 
                     <?php
                     if (!empty($config_smtp_host)) { ?>
-                        <h5 class="text-center"><a href="login_reset.php">Forgot password?</a></h5>
+                        <h5 class="text-center"><a href="login_reset.php"><?= __('Forgot password?') ?></a></h5>
                     <?php } ?>
 
                 </form>
@@ -188,7 +188,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
                     <hr>
                     <div class="col text-center">
                         <a href="login_microsoft.php">
-                            <button type="button" class="btn btn-secondary">Login with Microsoft Entra</button>
+                            <button type="button" class="btn btn-secondary"><?= __('Login with Microsoft Entra') ?></button>
                         </a>
                     </div>
                 <?php } ?>
@@ -204,7 +204,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
 
     <?php
     if (!$config_whitelabel_enabled) {
-        echo '<small class="text-muted">Powered by ITFlow</small>';
+        echo '<small class="text-muted">' . __('Powered by ITFlow') . '</small>';
     }
     ?>
 
