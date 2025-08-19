@@ -15,7 +15,7 @@ require_once "includes/inc_set_timezone.php";
 
 // Check if the application is configured for HTTPS-only access
 if ($config_https_only && (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') && (!isset($_SERVER['HTTP_X_FORWARDED_PROTO']) || $_SERVER['HTTP_X_FORWARDED_PROTO'] !== 'https')) {
-    echo "Login is restricted as ITFlow defaults to HTTPS-only for enhanced security. To login using HTTP, modify the config.php file by setting config_https_only to false. However, this is strongly discouraged, especially when accessing from potentially unsafe networks like the internet.";
+    echo __('Login is restricted as ITFlow defaults to HTTPS-only for enhanced security. To login using HTTP, modify the config.php file by setting config_https_only to false. However, this is strongly discouraged, especially when accessing from potentially unsafe networks like the internet.');
     exit;
 }
 
@@ -279,11 +279,9 @@ if (isset($_POST['login'])) {
         // Logging
         logAction("Login", "Failed", "Failed login attempt using $email");
 
-        $response = "
-              <div class='alert alert-danger'>
-                Incorrect username or password.
-                <button class='close' data-dismiss='alert'>&times;</button>
-              </div>";
+        $response = "<div class='alert alert-danger'>" 
+        . __('Incorrect username or password.') 
+        . "<button class='close' data-dismiss='alert'>&times;</button></div>";
     }
 }
 
@@ -340,7 +338,7 @@ if (isset($_POST['login'])) {
             <form method="post">
 
                 <div class="input-group mb-3" <?php if (isset($token_field)) { echo "hidden"; } ?>>
-                    <input type="text" class="form-control" placeholder="Agent Email" name="email" value="<?php if (isset($token_field)) { echo $email; }?>" required <?php if (!isset($token_field)) { echo "autofocus"; } ?> >
+                    <input type="text" class="form-control" placeholder="<?= __('Agent Email') ?>" name="email" value="<?php if (isset($token_field)) { echo $email; }?>" required <?php if (!isset($token_field)) { echo "autofocus"; } ?> >
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -348,7 +346,7 @@ if (isset($_POST['login'])) {
                     </div>
                 </div>
                 <div class="input-group mb-3" <?php if (isset($token_field)) { echo "hidden"; } ?>>
-                    <input type="password" class="form-control" placeholder="Agent Password" name="password" value="<?php if (isset($token_field)) { echo $password; } ?>" required>
+                    <input type="password" class="form-control" placeholder="<?= __('Password') ?>" name="password" value="<?php if (isset($token_field)) { echo $password; } ?>" required>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -365,7 +363,7 @@ if (isset($_POST['login'])) {
                 <div class="form-group mb-3">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="remember_me" name="remember_me">
-                        <label class="custom-control-label" for="remember_me">Remember Me</label>
+                        <label class="custom-control-label" for="remember_me"><?= __('Remember Me') ?></label>
                     </div>
                 </div>
 
@@ -375,11 +373,11 @@ if (isset($_POST['login'])) {
 
                 ?>
 
-                <button type="submit" class="btn btn-primary btn-block mb-3" name="login">Sign In</button>
+                <button type="submit" class="btn btn-primary btn-block mb-3" name="login"><?= __('Sign In') ?></button>
 
                 <?php if($config_client_portal_enable == 1){ ?>
                     <hr>
-                    <h5 class="text-center">Looking for the <a href="client">Client Portal?<a/></h5>
+                    <h5 class="text-center"><?= __('Looking for the') ?> <a href="client"><?= __('Client Portal?') ?></a></h5>
                 <?php } ?>
 
             </form>

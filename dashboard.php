@@ -40,7 +40,7 @@ $sql_years_select = mysqli_query($mysqli, "
         <input type="hidden" name="enable_financial" value="0">
         <input type="hidden" name="enable_technical" value="0">
 
-        <label for="year" class="mr-sm-2">Select Year:</label>
+        <label for="year" class="mr-sm-2"><?= __('Select Year') ?>:</label>
         <select id="year" onchange="this.form.submit()" class="form-control mr-sm-3 col-sm-2 mb-3 mb-sm-0" name="year">
             <?php while ($row = mysqli_fetch_array($sql_years_select)) {
                 $year_select = $row['all_years'];
@@ -57,14 +57,14 @@ $sql_years_select = mysqli_query($mysqli, "
         <?php if ($session_user_role == 1 || ($session_user_role == 3 && $config_module_enable_accounting == 1)) { ?>
             <div class="custom-control custom-switch mr-3">
                 <input type="checkbox" onchange="this.form.submit()" class="custom-control-input" id="customSwitch1" name="enable_financial" value="1" <?php if ($user_config_dashboard_financial_enable == 1) { echo "checked"; } ?>>
-                <label class="custom-control-label" for="customSwitch1">Financial</label>
+                <label class="custom-control-label" for="customSwitch1"><?= __('Financial') ?></label>
             </div>
         <?php } ?>
 
         <?php if ($session_user_role >= 2 && $config_module_enable_ticketing == 1) { ?>
             <div class="custom-control custom-switch">
                 <input type="checkbox" onchange="this.form.submit()" class="custom-control-input" id="customSwitch2" name="enable_technical" value="1" <?php if ($user_config_dashboard_technical_enable == 1) { echo "checked"; } ?>>
-                <label class="custom-control-label" for="customSwitch2">Technical</label>
+                <label class="custom-control-label" for="customSwitch2"><?= __('Technical') ?></label>
             </div>
         <?php } ?>
     </form>
@@ -169,9 +169,9 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-primary" href="payments.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo numfmt_format_currency($currency_format, $total_income, "$session_company_currency"); ?></h3>
-                    <p>Income</p>
+                    <p><?= __('Income') ?></p>
                     <hr>
-                    <small>Receivables: <?php echo numfmt_format_currency($currency_format, $receivables, "$session_company_currency"); ?></small>
+                    <small><?= __('Receivables') ?>: <?php echo numfmt_format_currency($currency_format, $receivables, "$session_company_currency"); ?></small>
                 </div>
                 <div class="icon">
                     <i class="fa fa-hand-holding-usd"></i>
@@ -185,7 +185,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-danger" href="expenses.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo numfmt_format_currency($currency_format, $total_expenses, "$session_company_currency"); ?></h3>
-                    <p>Expenses</p>
+                    <p><?= __('Expenses') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-shopping-cart"></i>
@@ -199,7 +199,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-success" href="report_profit_loss.php">
                 <div class="inner">
                     <h3><?php echo numfmt_format_currency($currency_format, $profit, "$session_company_currency"); ?></h3>
-                    <p>Profit</p>
+                    <p><?= __('Profit') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-balance-scale"></i>
@@ -213,7 +213,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-info" href="report_recurring_by_client.php">
                 <div class="inner">
                     <h3><?php echo numfmt_format_currency($currency_format, $recurring_monthly_total, "$session_company_currency"); ?></h3>
-                    <p>Monthly Recurring Income</p>
+                    <p><?= __('Monthly Recurring Income') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-sync-alt"></i>
@@ -227,7 +227,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-pink" href="recurring_expenses.php">
                 <div class="inner">
                     <h3><?php echo numfmt_format_currency($currency_format, $recurring_expense_monthly_total, "$session_company_currency"); ?></h3>
-                    <p>Monthly Recurring Expense</p>
+                    <p><?= __('Monthly Recurring Expense') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-clock"></i>
@@ -242,7 +242,7 @@ if ($user_config_dashboard_financial_enable == 1) {
                 <a class="small-box bg-secondary" href="report_tickets_unbilled.php">
                     <div class="inner">
                         <h3><?php echo $unbilled_tickets; ?></h3>
-                        <p>Unbilled Ticket<?php if ($unbilled_tickets > 1 || $unbilled_tickets == 0) { echo "s"; } ?></p>
+                        <p><?= __('Unbilled Ticket') ?><?php if ($unbilled_tickets > 1 || $unbilled_tickets == 0) { echo "s"; } ?></p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-ticket-alt"></i>
@@ -255,7 +255,7 @@ if ($user_config_dashboard_financial_enable == 1) {
                 <a class="small-box bg-secondary" href="recurring_invoices.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                     <div class="inner">
                         <h3><?php echo $recurring_invoices_added; ?></h3>
-                        <p>Recurring Invoices Added</p>
+                        <p><?= __('Recurring Invoices Added') ?></p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-file-invoice"></i>
@@ -269,7 +269,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-secondary" href="clients.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo $clients_added; ?></h3>
-                    <p>New Clients</p>
+                    <p><?= __('New Clients') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>
@@ -283,7 +283,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-secondary" href="vendors.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo $vendors_added; ?></h3>
-                    <p>New Vendors</p>
+                    <p><?= __('New Vendors') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-building"></i>
@@ -297,7 +297,7 @@ if ($user_config_dashboard_financial_enable == 1) {
             <a class="small-box bg-secondary" href="trips.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo number_format($total_miles, 2); ?></h3>
-                    <p>Miles Traveled</p>
+                    <p><?= __('Miles Traveled') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-route"></i>
@@ -309,7 +309,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-md-12">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-fw fa-chart-area mr-2"></i>Cash Flow</h3>
+                    <h3 class="card-title"><i class="fas fa-fw fa-chart-area mr-2"></i><?= __('Cash Flow') ?></h3>
                     <div class="card-tools">
                         <a href="report_income_summary.php" class="btn btn-tool">
                             <i class="fas fa-eye"></i>
@@ -328,7 +328,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-lg-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-fw fa-chart-pie mr-2"></i>Income by Category <small>(Top 5)</small></h3>
+                    <h3 class="card-title"><i class="fas fa-fw fa-chart-pie mr-2"></i><?= __('Income by Category') ?> <small>(Top 5)</small></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -344,7 +344,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-lg-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-fw fa-shopping-cart mr-2"></i>Expenses by Category <small>(Top 5)</small></h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-shopping-cart mr-2"></i><?= __('Expenses by Category') ?> <small>(Top 5)</small></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -360,7 +360,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-lg-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-fw fa-building mr-2"></i>Expenses by Vendor <small>(Top 5)</small></h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-building mr-2"></i><?= __('Expenses by Vendor') ?> <small>(Top 5)</small></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -376,7 +376,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-md-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fa fa-fw fa-piggy-bank mr-2"></i>Account Balances</h3>
+                    <h3 class="card-title"><i class="fa fa-fw fa-piggy-bank mr-2"></i><?= __('Account Balances') ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -424,7 +424,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-md-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-fw fa-credit-card mr-2"></i>Latest Income</h3>
+                    <h3 class="card-title"><i class="fas fa-fw fa-credit-card mr-2"></i><?= __('Latest Income') ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -435,10 +435,10 @@ if ($user_config_dashboard_financial_enable == 1) {
                     <table class="table table-borderless table-sm">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Customer</th>
-                                <th>Invoice</th>
-                                <th class="text-right">Amount</th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('Customer') ?></th>
+                                <th><?= __('Invoice') ?></th>
+                                <th class="text-right"><?= __('Amount') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -465,7 +465,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-md-4">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-fw fa-shopping-cart mr-2"></i>Latest Expenses</h3>
+                    <h3 class="card-title"><i class="fas fa-fw fa-shopping-cart mr-2"></i><?= __('Latest Expenses') ?></h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="remove">
                             <i class="fas fa-times"></i>
@@ -476,10 +476,10 @@ if ($user_config_dashboard_financial_enable == 1) {
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Vendor</th>
-                                <th>Category</th>
-                                <th class="text-right">Amount</th>
+                                <th><?= __('Date') ?></th>
+                                <th><?= __('Vendor') ?></th>
+                                <th><?= __('Category') ?></th>
+                                <th class="text-right"><?= __('Amount') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -505,7 +505,7 @@ if ($user_config_dashboard_financial_enable == 1) {
         <div class="col-md-12">
             <div class="card card-dark mb-3">
                 <div class="card-header">
-                    <h3 class="card-title"><i class="fas fa-fw fa-route mr-2"></i>Trip Flow</h3>
+                    <h3 class="card-title"><i class="fas fa-fw fa-route mr-2"></i><?= __('Trip Flow') ?></h3>
                     <div class="card-tools">
                         <a href="trips.php" class="btn btn-tool">
                             <i class="fas fa-eye"></i>
@@ -571,7 +571,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-secondary" href="clients.php?dtf=<?php echo $year; ?>-01-01&dtt=<?php echo $year; ?>-12-31">
                 <div class="inner">
                     <h3><?php echo $clients_added; ?></h3>
-                    <p>New Clients</p>
+                    <p><?= __('New Clients') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-users"></i>
@@ -584,7 +584,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-success" href="contacts.php">
                 <div class="inner">
                     <h3><?php echo $contacts_added; ?></h3>
-                    <p>New Contacts</p>
+                    <p><?= __('New Contacts') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-user"></i>
@@ -597,7 +597,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-info" href="assets.php">
                 <div class="inner">
                     <h3><?php echo $assets_added; ?></h3>
-                    <p>New Assets</p>
+                    <p><?= __('New Assets') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-desktop"></i>
@@ -610,7 +610,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-danger" href="tickets.php">
                 <div class="inner">
                     <h3><?php echo $active_tickets; ?></h3>
-                    <p>Active Tickets</p>
+                    <p><?= __('Active Tickets') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-ticket-alt"></i>
@@ -623,7 +623,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-warning" href="domains.php?sort=domain_expire&order=ASC">
                 <div class="inner">
                     <h3><?php echo $expiring_domains; ?></h3>
-                    <p>Expiring Domains</p>
+                    <p><?= __('Expiring Domains') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-globe"></i>
@@ -636,7 +636,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <a class="small-box bg-primary" href="certificates.php?sort=certificate_expire&order=ASC">
                 <div class="inner">
                     <h3><?php echo $expiring_certificates; ?></h3>
-                    <p>Expiring Certificates</p>
+                    <p><?= __('Expiring Certificates') ?></p>
                 </div>
                 <div class="icon">
                     <i class="fa fa-lock"></i>
@@ -651,7 +651,7 @@ if ($user_config_dashboard_technical_enable == 1) {
             <div class="col-12">
                 <div class="card card-dark mb-3">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="fa fa-fw fa-life-ring mr-2"></i>Your Open Tickets</h3>
+                        <h3 class="card-title"><i class="fa fa-fw fa-life-ring mr-2"></i><?= __('Your Open Tickets') ?></h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="remove">
                                 <i class="fas fa-times"></i>
@@ -662,13 +662,13 @@ if ($user_config_dashboard_technical_enable == 1) {
                         <table class="table table-sm">
                             <thead>
                                 <tr>
-                                    <th>Number</th>
-                                    <th>Subject</th>
-                                    <th>Client</th>
-                                    <th>Contact</th>
-                                    <th>Priority</th>
-                                    <th>Status</th>
-                                    <th>Last Response</th>
+                                    <th><?= __('Number') ?></th>
+                                    <th><?= __('Subject') ?></th>
+                                    <th><?= __('Client') ?></th>
+                                    <th><?= __('Contact') ?></th>
+                                    <th><?= __('Priority') ?></th>
+                                    <th><?= __('Status') ?></th>
+                                    <th><?= __('Last Response') ?></th>
                                 </tr>
                             </thead>
                             <tbody>

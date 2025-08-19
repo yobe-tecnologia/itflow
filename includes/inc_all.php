@@ -1,5 +1,7 @@
 <?php
 
+require_once "includes/i18n.php";
+
 require_once "config.php";
 require_once "functions.php";
 require_once "check_login.php";
