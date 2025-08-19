@@ -78,7 +78,7 @@ return [
   'Active Tickets' => 'Tickets ativos',
   'Expiring Domains' => 'Domínios expirados',
   'Expiring Certificates' => 'Certificados expirados',
-  'You Open Tickets' => 'Seus Tickets abertos',
+  'Your Open Tickets' => 'Seus Tickets abertos',
   'Number' => 'Número',
   'Subject' => 'Assunto',
   'Client' => 'Cliente',
