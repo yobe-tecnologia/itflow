@@ -171,7 +171,7 @@ if ($session_contact_primary == 1 || $session_contact_is_billing_contact) { ?>
     <div class="col-sm-3 offset-1">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-bold">Account Balance</h3>
+                <h3 class="card-title text-bold"><?= __('Account Balance') ?></h3>
             </div>
             <div class="card-body">
                 <div class="h4 text-danger"><b><?php echo numfmt_format_currency($currency_format, $balance, $session_company_currency); ?></b></div>
@@ -184,7 +184,7 @@ if ($session_contact_primary == 1 || $session_contact_is_billing_contact) { ?>
     <div class="col-sm-3">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Recurring Monthly</h3>
+                <h3 class="card-title"><?= __('Recurring Monthly') ?></h3>
             </div>
             <div class="card-body">
                 <div class="h4"><b><?php echo numfmt_format_currency($currency_format, $recurring_monthly_total, $session_company_currency); ?></b></div>
@@ -208,7 +208,7 @@ if ($session_contact_primary == 1 || $session_contact_is_technical_contact) {
     <div class="col-sm-3 offset-1">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title text-bold">Domains Expiring</h3>
+                <h3 class="card-title text-bold"><?= __('Domains Expiring') ?></h3>
             </div>
             <div class="card-body">
                 <?php
@@ -222,7 +222,7 @@ if ($session_contact_primary == 1 || $session_contact_is_technical_contact) {
                     ?>
                     <p class="mb-1">
                         <i class="fa fa-fw fa-globe text-secondary mr-1"></i>
-                        Domain: <?php echo $domain_name; ?>
+                        <?= __('Domain') ?>: <?php echo $domain_name; ?>
                         <span>-- <?php echo $domain_expire; ?> (<?php echo $domain_expire_human; ?>)</span>
                     </p>
                     <?php
@@ -238,7 +238,7 @@ if ($session_contact_primary == 1 || $session_contact_is_technical_contact) {
 <?php } ?>
 
 <div class="col-md-2 offset-1">
-    <a href="ticket_add.php" class="btn btn-primary btn-block">New ticket</a>
+    <a href="ticket_add.php" class="btn btn-primary btn-block"><?= __('New ticket') ?></a>
 </div>
 
 <?php require_once "includes/footer.php"; ?>

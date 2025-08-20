@@ -12,7 +12,7 @@ header("X-Frame-Options: DENY"); // Legacy
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo nullable_htmlentities($session_company_name); ?> | Client Portal</title>
+    <title><?php echo nullable_htmlentities($session_company_name); ?> | <?= __('Client Portal') ?></title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,22 +43,22 @@ header("X-Frame-Options: DENY"); // Legacy
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item <?php if (basename($_SERVER['PHP_SELF']) == "index.php") {echo "active";} ?>">
-                    <a class="nav-link" href="index.php">Home</a>
+                    <a class="nav-link" href="index.php"><?= __('Home') ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == "tickets.php" || basename($_SERVER['PHP_SELF']) == "ticket_add.php" || basename($_SERVER['PHP_SELF']) == "ticket.php") {echo "active";} ?>" href="tickets.php">Tickets</a>
+                    <a class="nav-link <?php if (basename($_SERVER['PHP_SELF']) == "tickets.php" || basename($_SERVER['PHP_SELF']) == "ticket_add.php" || basename($_SERVER['PHP_SELF']) == "ticket.php") {echo "active";} ?>" href="tickets.php"><?= __('Tickets') ?></a>
                 </li>
 
                 <?php if (($session_contact_primary == 1 || $session_contact_is_billing_contact) && $config_module_enable_accounting == 1) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php echo in_array(basename($_SERVER['PHP_SELF']), ['invoices.php', 'quotes.php', 'autopay.php']) ? 'active' : ''; ?>" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Finance
+                            <?= __('Finance') ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <a class="dropdown-item" href="invoices.php">Invoices</a>
-                            <a class="dropdown-item" href="recurring_invoices.php">Recurring Invoices</a>
-                            <a class="dropdown-item" href="quotes.php">Quotes</a>
-                            <a class="dropdown-item" href="autopay.php">Auto Payment</a>
+                            <a class="dropdown-item" href="invoices.php"><?= __('Invoices') ?></a>
+                            <a class="dropdown-item" href="recurring_invoices.php"><?= __('Recurring Invoices') ?></a>
+                            <a class="dropdown-item" href="quotes.php"><?= __('Quotes') ?></a>
+                            <a class="dropdown-item" href="autopay.php"><?= __('Auto Payment') ?></a>
                         </div>
                     </li>
                 <?php } ?>
@@ -66,14 +66,14 @@ header("X-Frame-Options: DENY"); // Legacy
                 <?php if ($config_module_enable_itdoc && ($session_contact_primary == 1 || $session_contact_is_technical_contact)) { ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle <?php echo in_array(basename($_SERVER['PHP_SELF']), ['documents.php', 'contacts.php', 'domains.php', 'certificates.php']) ? 'active' : ''; ?>" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Technical
+                            <?= __('Technical') ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="contacts.php">Contacts</a>
-                            <a class="dropdown-item" href="documents.php">Documents</a>
-                            <a class="dropdown-item" href="domains.php">Domains</a>
-                            <a class="dropdown-item" href="certificates.php">Certificates</a>
-                            <a class="dropdown-item" href="ticket_view_all.php">All tickets</a>
+                            <a class="dropdown-item" href="contacts.php"><?= __('Contacts') ?></a>
+                            <a class="dropdown-item" href="documents.php"><?= __('Documents') ?></a>
+                            <a class="dropdown-item" href="domains.php"><?= __('Domains') ?></a>
+                            <a class="dropdown-item" href="certificates.php"><?= __('Certificates') ?></a>
+                            <a class="dropdown-item" href="ticket_view_all.php"><?= __('All tickets') ?></a>
                         </div>
                     </li>
                 <?php } ?>
@@ -109,9 +109,9 @@ header("X-Frame-Options: DENY"); // Legacy
                         <?php echo stripslashes(nullable_htmlentities($session_contact_name)); ?>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="profile.php"><i class="fas fa-fw fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="profile.php"><i class="fas fa-fw fa-user mr-2"></i><?= __('Account') ?></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="post.php?logout"><i class="fas fa-fw fa-sign-out-alt mr-2"></i>Sign out</a>
+                        <a class="dropdown-item" href="post.php?logout"><i class="fas fa-fw fa-sign-out-alt mr-2"></i><?= __('Sign out') ?></a>
                     </div>
                 </li>
             </ul>
@@ -138,7 +138,7 @@ header("X-Frame-Options: DENY"); // Legacy
         </div>
 
         <div class="col-md-11 p-0">
-            <h4>Welcome, <strong><?php echo stripslashes(nullable_htmlentities($session_contact_name)); ?></strong>!</h4>
+            <h4><?= __('Welcome') ?>, <strong><?php echo stripslashes(nullable_htmlentities($session_contact_name)); ?></strong>!</h4>
             <hr>
         </div>
     </div>

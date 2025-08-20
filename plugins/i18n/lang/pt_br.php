@@ -88,4 +88,32 @@ return [
   'Last Response' => 'Última interação',
   
 
+
+
+  // PORTAL DO CLIENTE
+  //Header.php
+  'Client Portal' => 'Portal do cliente',
+  'Tickets' => 'Tickets',
+  'Finance' => 'Financeiro',
+  'Invoices' => 'Faturas',
+  'Recurring Invoices' => 'Faturas recorrentes',
+  'Quotes' => 'Cotações',
+  'Auto Payment' => 'Pagamento automatico',
+  'Technical' => 'Técnico',
+  'Contacts' => 'Contatos',
+  'Documents' => 'Documentos',
+  'Domains' => 'Dominios',
+  'Certificates' => 'Certificados',
+  'All tickets' => 'Todos os tickets',
+  'Welcome' => 'Bem Vindo',
+  'Account' => 'Perfil',
+  'Sign out' => 'Sair',
+
+  //index.php
+  'Account Balance' => 'Saldo',
+  'Recurring Monthly' => 'Recorrencia mensal',
+  'Domains Expiring' => 'Dominios Expirando',
+  'Domain' => 'Dominio',
+  'New ticket' => 'Novo ticket',
+
 ];
